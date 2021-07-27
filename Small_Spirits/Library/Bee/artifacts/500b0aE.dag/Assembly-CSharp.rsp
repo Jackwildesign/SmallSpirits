@@ -315,6 +315,7 @@
 "Assets/Scripts/ClensingTool.cs"
 "Assets/Scripts/MouseLook.cs"
 "Assets/Scripts/PlaceClensingTool.cs"
+"Assets/Scripts/PlantCorruption.cs"
 "Assets/Scripts/PlayerMovementScript.cs"
 -langversion:8.0
 

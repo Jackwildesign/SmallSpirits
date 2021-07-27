@@ -9,11 +9,13 @@ public class PlaceClensingTool : MonoBehaviour
     [SerializeField] Camera fpsCamera;
     [SerializeField] ClensingTool clensingTool;
 
+    ClensingTool clensingToolToPlace;
+
     bool clensingToolIsPlaced;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -23,8 +25,6 @@ public class PlaceClensingTool : MonoBehaviour
         CheckForRightClick();
 
     }
-
-
 
     private void CheckForLeftClick()
     {
@@ -36,6 +36,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     private void CheckForRightClick()
     {
+        //todo - Change this to be based on a keyboard press?
         if (Input.GetButtonDown("Fire2"))
         {
             ReturnClensingTool();
@@ -46,9 +47,8 @@ public class PlaceClensingTool : MonoBehaviour
     {
         if (clensingToolIsPlaced == true)
         {
-            var toolsToDelete = FindObjectsOfType<ClensingTool>();
-            foreach (ClensingTool clensingtool in toolsToDelete)
-            Destroy(gameObject);
+            clensingToolIsPlaced = false;
+            Destroy(clensingToolToPlace.gameObject);
         }
     }
 
@@ -56,7 +56,7 @@ public class PlaceClensingTool : MonoBehaviour
     {
         if(clensingToolIsPlaced == false)
         {
-            Instantiate(clensingTool, transform.position, transform.rotation);
+            clensingToolToPlace =  Instantiate(clensingTool, transform.position, transform.rotation);
             clensingToolIsPlaced = true;
         }
         else

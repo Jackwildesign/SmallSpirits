@@ -53,10 +53,11 @@
     <UnityVersion>2021.1.9f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
-    <Compile Include="Assets\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\Scripts\PlaceClensingTool.cs" />
     <Compile Include="Assets\Scripts\ClensingTool.cs" />
+    <Compile Include="Assets\Scripts\PlaceClensingTool.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
+    <Compile Include="Assets\Scripts\PlantCorruption.cs" />
+    <Compile Include="Assets\Scripts\MouseLook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders\Skybox Cubemap Extended.shader" />

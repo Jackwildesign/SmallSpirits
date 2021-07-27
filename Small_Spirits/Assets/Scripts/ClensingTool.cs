@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class ClensingTool : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+    public float clensingRadius;
+    [SerializeField] int clensingPower = 1;
+    [SerializeField] float clensingSpeed = 0.5f;
+    private Collider[] hitColliders;
+
     void Start()
     {
-        
+        CheckForTreestoClense();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CheckForTreestoClense()
     {
-        
+        hitColliders = Physics.OverlapSphere(transform.position, clensingRadius);
+        AccessRemoveCorruptionOnTrees();
+    }
+
+    private void AccessRemoveCorruptionOnTrees()
+    {
+        foreach (Collider tree in hitColliders)
+        {
+            if (tree.gameObject.layer == 7)
+            {
+                PlantCorruption plantScript = tree.gameObject.GetComponent<PlantCorruption>();
+
+                StartCoroutine(BeginClensing(plantScript));
+            }
+        }
+    }
+
+    IEnumerator BeginClensing(PlantCorruption plantScript)
+    {
+        while (plantScript.corruption > 0)
+        {
+            plantScript.RemoveCorruption(clensingPower);
+
+            yield return new WaitForSeconds(clensingSpeed);
+        }
     }
 }
