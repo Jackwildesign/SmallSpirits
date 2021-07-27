@@ -18,7 +18,5 @@ public class PlantCorruption : MonoBehaviour
             Renderer treeRender = GetComponent<Renderer>();
             treeRender.material.SetColor("Green", Color.green);
         }
-        print("corruption = " + corruption);
-
     }
 }

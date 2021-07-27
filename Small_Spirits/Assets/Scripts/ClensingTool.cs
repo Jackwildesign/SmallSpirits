@@ -9,6 +9,7 @@ public class ClensingTool : MonoBehaviour
     [SerializeField] int clensingPower = 1;
     [SerializeField] float clensingSpeed = 0.5f;
     private Collider[] hitColliders;
+    public int currency = 0;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class ClensingTool : MonoBehaviour
         while (plantScript.corruption > 0)
         {
             plantScript.RemoveCorruption(clensingPower);
-
+            currency++;
             yield return new WaitForSeconds(clensingSpeed);
         }
     }

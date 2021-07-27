@@ -8,6 +8,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     [SerializeField] Camera fpsCamera;
     [SerializeField] ClensingTool clensingTool;
+    [SerializeField] PlayerCurrencyManager PlayerCurencyRef;
 
     ClensingTool clensingToolToPlace;
 
@@ -47,9 +48,16 @@ public class PlaceClensingTool : MonoBehaviour
     {
         if (clensingToolIsPlaced == true)
         {
+            CollectCurrencyFromClensingTool();
             clensingToolIsPlaced = false;
             Destroy(clensingToolToPlace.gameObject);
         }
+    }
+
+    private void CollectCurrencyFromClensingTool()
+    {
+        int collectedCurrency = clensingToolToPlace.currency;
+        PlayerCurencyRef.StringCurrencyTotal(collectedCurrency);
     }
 
     void SpawnClensingTool()
