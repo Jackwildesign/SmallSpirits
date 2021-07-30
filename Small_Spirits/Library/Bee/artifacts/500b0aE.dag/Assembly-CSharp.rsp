@@ -315,6 +315,7 @@
 "Assets/Scripts/ClensingTool.cs"
 "Assets/Scripts/MouseLook.cs"
 "Assets/Scripts/PlaceClensingTool.cs"
+"Assets/Scripts/PlacementMenuUI.cs"
 "Assets/Scripts/PlantCorruption.cs"
 "Assets/Scripts/PlayerCurrencyManager.cs"
 "Assets/Scripts/PlayerMovementScript.cs"

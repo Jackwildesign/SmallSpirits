@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxophobic.Utils.Scripts", "Boxophobic.Utils.Scripts.csproj", "{4E9E31D0-CB45-1500-799D-B297FF2C80B8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A66C7CBC-02BD-B398-8A24-F1610C52EC59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxophobic.Utils.Scripts", "Boxophobic.Utils.Scripts.csproj", "{4E9E31D0-CB45-1500-799D-B297FF2C80B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxophobic.Utils.Editor", "Boxophobic.Utils.Editor.csproj", "{01405B33-164B-C64F-8066-ACCF4B257891}"
 EndProject
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A66C7CBC-02BD-B398-8A24-F1610C52EC59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A66C7CBC-02BD-B398-8A24-F1610C52EC59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A66C7CBC-02BD-B398-8A24-F1610C52EC59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A66C7CBC-02BD-B398-8A24-F1610C52EC59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E9E31D0-CB45-1500-799D-B297FF2C80B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01405B33-164B-C64F-8066-ACCF4B257891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01405B33-164B-C64F-8066-ACCF4B257891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01405B33-164B-C64F-8066-ACCF4B257891}.Release|Any CPU.ActiveCfg = Release|Any CPU

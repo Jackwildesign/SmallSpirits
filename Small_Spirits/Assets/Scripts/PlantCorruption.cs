@@ -11,7 +11,7 @@ public class PlantCorruption : MonoBehaviour
     {
         if (corruption > 0)
         {
-            corruption = corruption - clensingpower; //Turn this into a corutine so it takes longer to occur.
+            corruption = corruption - clensingpower; 
         }
         else if (corruption <= 0)
         {
