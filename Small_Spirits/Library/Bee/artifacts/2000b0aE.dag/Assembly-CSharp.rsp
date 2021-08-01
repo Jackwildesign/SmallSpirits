@@ -299,6 +299,7 @@
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/MouseLook.cs"
 "Assets/Scripts/PlaceClensingTool.cs"
+"Assets/Scripts/PlacementManager.cs"
 "Assets/Scripts/PlacementMenuUI.cs"
 "Assets/Scripts/PlantCorruption.cs"
 "Assets/Scripts/PlayerCurrencyManager.cs"

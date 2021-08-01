@@ -10,6 +10,7 @@ public class PlacementMenuUI : MonoBehaviour
     [SerializeField] ScrollRect plantMenu;
     [SerializeField] ScrollRect rockMenu;
     [SerializeField] ScrollRect miscMenu;
+    
 
     public List<ScrollRect> subMenus = new List<ScrollRect>();
 

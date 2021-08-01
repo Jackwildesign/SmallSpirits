@@ -8,7 +8,9 @@ public class PlaceClensingTool : MonoBehaviour
 
     [SerializeField] Camera fpsCamera;
     [SerializeField] ClensingTool clensingTool;
-    [SerializeField] PlayerCurrencyManager PlayerCurencyRef;
+    [SerializeField] PlayerCurrencyManager playerCurencyRef;
+    [SerializeField] PlacementManager placementManagerRef;
+    [SerializeField] MenuManager menuManagerRef;
 
     ClensingTool clensingToolToPlace;
 
@@ -46,7 +48,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     private void ReturnClensingTool()
     {
-        if (clensingToolIsPlaced == true)
+        if (clensingToolIsPlaced == true && placementManagerRef.placingMode == false && menuManagerRef.placementUIOpen == false)
         {
             CollectCurrencyFromClensingTool();
             clensingToolIsPlaced = false;
@@ -57,12 +59,13 @@ public class PlaceClensingTool : MonoBehaviour
     private void CollectCurrencyFromClensingTool()
     {
         int collectedCurrency = clensingToolToPlace.currency;
-        PlayerCurencyRef.StringCurrencyTotal(collectedCurrency);
+        playerCurencyRef.StringCurrencyTotal(collectedCurrency);
     }
 
     void SpawnClensingTool()
     {
-        if(clensingToolIsPlaced == false)
+        if(clensingToolIsPlaced == false && placementManagerRef.placingMode == false && menuManagerRef.placementUIOpen == false)
+            
         {
             clensingToolToPlace =  Instantiate(clensingTool, transform.position, transform.rotation);
             clensingToolIsPlaced = true;
