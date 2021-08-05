@@ -18,8 +18,16 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            OpenPlacementMenu(true);
+            if (placementMenu.gameObject.activeSelf == false)
+            {
+                OpenPlacementMenu(true);
+            }
+            else
+            {
+                OpenPlacementMenu(false);
+            }
         }
+        
     }
 
     

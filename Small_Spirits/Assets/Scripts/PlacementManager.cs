@@ -6,52 +6,68 @@ using UnityEngine;
 public class PlacementManager : MonoBehaviour
 {
 
-    public bool placingMode = false;
-
     
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject placeableObjectPrefab;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] LayerMask placementLayerMask;
+    [SerializeField] Camera cam;
+
+    public bool placingMode = false;
+    bool readyToPlace;
+
+
+    private GameObject currentPlaceableObject;
+
+    private void Update()
     {
         CheckForRayCollision();
-    }
-
-    private void CheckForRayCollision()
-    {
-        Ray placementRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hitInfo;
-
-        if (placingMode == true)
-        {
-            if (Physics.Raycast(placementRay, out hitInfo, 15))
-            {
-                print("There is something in front of the object!");
-            }
-
-        }
+        ReleaseIfClicked();
     }
 
     public void TogglePlacingMode(bool modeSelected)
     {
         placingMode = modeSelected;
-        CheckPlacingModeState();
     }
 
-    private void CheckPlacingModeState()
-    {
-        if (placingMode)
-        {
 
-            //find out which object we selected to place
-            //show visual represnetation of this
-            //Allow the player to click to place items
+    private void CheckForRayCollision()
+    {
+        Ray placementRay = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        RaycastHit hitInfo;
+
+        if (placingMode == true)
+        {
+            
+            //Debug.DrawRay(cam.transform.position, Vector3.forward * 10);
+            if (Physics.Raycast(placementRay, out hitInfo, 20, placementLayerMask))
+            {
+                print("Ray has hit = " + hitInfo.collider.gameObject.name);
+                ShowPlacingObject();
+                currentPlaceableObject.transform.position = hitInfo.point;
+                currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            }
+
+        }
+    }
+
+    private void ShowPlacingObject()
+    {
+        if (readyToPlace == false)
+        {
+            currentPlaceableObject = Instantiate(placeableObjectPrefab);
+            print("Spawning" + currentPlaceableObject.gameObject.name);
+            readyToPlace = true;
+        }
+        
+    }
+
+    private void ReleaseIfClicked()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentPlaceableObject = null;
+            readyToPlace = false;
         }
     }
 }
