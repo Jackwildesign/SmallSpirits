@@ -47,7 +47,6 @@ public class PlacementManager : MonoBehaviour
                 currentPlaceableObject.transform.position = hitInfo.point;
                 currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
             }
-
         }
     }
 
@@ -56,7 +55,7 @@ public class PlacementManager : MonoBehaviour
         if (readyToPlace == false)
         {
             currentPlaceableObject = Instantiate(placeableObjectPrefab);
-            print("Spawning" + currentPlaceableObject.gameObject.name);
+            print("Spawning" + currentPlaceableObject.name);
             readyToPlace = true;
         }
         

@@ -342,6 +342,7 @@
 "Assets/Scripts/PlantCorruption.cs"
 "Assets/Scripts/PlayerCurrencyManager.cs"
 "Assets/Scripts/PlayerMovementScript.cs"
+"Assets/Scripts/TreeGrowthManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
