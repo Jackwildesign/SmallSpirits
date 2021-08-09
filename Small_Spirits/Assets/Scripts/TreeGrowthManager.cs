@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TreeGrowthManager : MonoBehaviour
 {
+    [SerializeField] PlacementManager placementManagerRef;
+
     [Header("Models for Each stage of Growth")]
     [SerializeField] GameObject stageOneModel;
     [SerializeField] GameObject stageTwoModel;
@@ -22,6 +24,7 @@ public class TreeGrowthManager : MonoBehaviour
 
     void Start()
     {
+
         currentGameObject = stageOneModel;
         StartCoroutine(StartGrowing());
     }
@@ -29,6 +32,10 @@ public class TreeGrowthManager : MonoBehaviour
     IEnumerator StartGrowing()
     {
         //Do we want to keep growing old so we can have trees die over time? Maybe.
+        while (placementManagerRef.placingMode)
+        {
+            yield return new WaitForSeconds(1);
+        }
 
         yield return new WaitForSeconds(stageTwoAmount);
         SwitchTreeModel(stageTwoModel);
