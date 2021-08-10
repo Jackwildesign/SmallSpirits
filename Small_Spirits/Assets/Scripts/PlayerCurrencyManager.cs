@@ -17,6 +17,6 @@ public class PlayerCurrencyManager : MonoBehaviour
     public void StringCurrencyTotal(int currencyUpdate)
     {
         currencyTotal = currencyTotal + currencyUpdate;
-        playerCurrencyText.text = " Total Currency = " + currencyTotal.ToString();
+        playerCurrencyText.text = "Total Currency = " + currencyTotal.ToString();
     }
 }

@@ -5,20 +5,31 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-    [SerializeField] GameObject placeableObjectPrefab;
+    GameObject placeableObjectPrefab;
 
     [SerializeField] LayerMask placementLayerMask;
     [SerializeField] Camera cam;
 
-    bool readyToPlace;
+    bool readyToPlace = false;
+
     private GameObject currentPlaceableObject;
+
+    public void SetCurrentPlaceableObject (GameObject selectedObject)
+    {
+        placeableObjectPrefab = selectedObject;
+    }
 
     private void Update()
     {
         CheckForRayCollision();
         ReleaseIfClicked();
+        ClosePlacementModeOnMouse1();
 
-        if (Input.GetKeyDown(KeyCode.Mouse3) || Input.GetKeyDown(KeyCode.Escape))
+    }
+
+    private void ClosePlacementModeOnMouse1()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (currentPlaceableObject != null)
             {
@@ -26,8 +37,6 @@ public class PlacementManager : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-
-        
     }
 
     private void CheckForRayCollision()
@@ -37,22 +46,24 @@ public class PlacementManager : MonoBehaviour
         //Debug.DrawRay(cam.transform.position, Vector3.forward * 10);
         if (Physics.Raycast(placementRay, out hitInfo, 20, placementLayerMask))
         {
-            print("Ray has hit = " + hitInfo.collider.gameObject.name);
             ShowPlacingObject();
-            currentPlaceableObject.transform.position = hitInfo.point;
-            currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            if (currentPlaceableObject != null)
+            {
+                currentPlaceableObject.transform.position = hitInfo.point;
+                currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            }
+            
         }
     }
 
     private void ShowPlacingObject()
     {
-        if (readyToPlace == false)
+        if (placeableObjectPrefab != null && readyToPlace == false)
         {
             currentPlaceableObject = Instantiate(placeableObjectPrefab);
             print("Spawning" + currentPlaceableObject.name);
             readyToPlace = true;
-        }
-        
+        }  
     }
 
     private void ReleaseIfClicked()
