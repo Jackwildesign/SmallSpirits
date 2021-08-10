@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlacementMenuUI : MonoBehaviour
 {
@@ -10,13 +11,10 @@ public class PlacementMenuUI : MonoBehaviour
     [SerializeField] ScrollRect plantMenu;
     [SerializeField] ScrollRect rockMenu;
     [SerializeField] ScrollRect miscMenu;
+    [SerializeField] TMP_Text exitUIButtonPrompts;
     
-
     public List<ScrollRect> subMenus = new List<ScrollRect>();
 
-    
-
-    // Start is called before the first frame update
     void Start()
     {
         placementMenu.gameObject.SetActive(false);

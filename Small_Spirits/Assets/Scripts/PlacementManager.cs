@@ -5,48 +5,42 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-
-    
-
     [SerializeField] GameObject placeableObjectPrefab;
 
     [SerializeField] LayerMask placementLayerMask;
     [SerializeField] Camera cam;
 
-    public bool placingMode = false;
     bool readyToPlace;
-
-
     private GameObject currentPlaceableObject;
 
     private void Update()
     {
         CheckForRayCollision();
         ReleaseIfClicked();
-    }
 
-    public void TogglePlacingMode(bool modeSelected)
-    {
-        placingMode = modeSelected;
-    }
+        if (Input.GetKeyDown(KeyCode.Mouse3) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentPlaceableObject != null)
+            {
+                Destroy(currentPlaceableObject);
+                gameObject.SetActive(false);
+            }
+        }
 
+        
+    }
 
     private void CheckForRayCollision()
     {
         Ray placementRay = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hitInfo;
-
-        if (placingMode == true)
+        //Debug.DrawRay(cam.transform.position, Vector3.forward * 10);
+        if (Physics.Raycast(placementRay, out hitInfo, 20, placementLayerMask))
         {
-            
-            //Debug.DrawRay(cam.transform.position, Vector3.forward * 10);
-            if (Physics.Raycast(placementRay, out hitInfo, 20, placementLayerMask))
-            {
-                print("Ray has hit = " + hitInfo.collider.gameObject.name);
-                ShowPlacingObject();
-                currentPlaceableObject.transform.position = hitInfo.point;
-                currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
-            }
+            print("Ray has hit = " + hitInfo.collider.gameObject.name);
+            ShowPlacingObject();
+            currentPlaceableObject.transform.position = hitInfo.point;
+            currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
     }
 

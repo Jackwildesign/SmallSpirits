@@ -28,7 +28,7 @@ public class ClensingTool : MonoBehaviour
         {
             if (tree.gameObject.layer == 7)
             {
-                PlantCorruption plantScript = tree.gameObject.GetComponent<PlantCorruption>();
+                PlantCorruption plantScript = tree.gameObject.GetComponentInParent<PlantCorruption>();
 
                 StartCoroutine(BeginClensing(plantScript));
             }
