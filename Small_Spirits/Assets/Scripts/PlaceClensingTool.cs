@@ -48,7 +48,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     private void ReturnClensingTool()
     {
-        if (clensingToolIsPlaced == true && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.placementUIOpen == false)
+        if (clensingToolIsPlaced == true && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.menuOpen == false)
         {
             CollectCurrencyFromClensingTool();
             clensingToolIsPlaced = false;
@@ -64,7 +64,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     void SpawnClensingTool()
     {
-        if(clensingToolIsPlaced == false && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.placementUIOpen == false)
+        if(clensingToolIsPlaced == false && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.menuOpen == false)
             
         {
             clensingToolToPlace =  Instantiate(clensingTool, transform.position, transform.rotation);

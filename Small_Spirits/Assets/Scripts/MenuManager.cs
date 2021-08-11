@@ -6,7 +6,8 @@ public class MenuManager : MonoBehaviour
 {
 
     [SerializeField] PlacementMenuUI placementMenu;
-    public bool placementUIOpen;
+    [SerializeField] GameObject journal;
+    public bool menuOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -16,34 +17,48 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.J))
         {
-            if (placementMenu.gameObject.activeSelf == false)
+            if (journal.activeSelf == false)
             {
-                OpenPlacementMenu(true);
+                AlterMenuStateMenu(true, journal);
             }
             else
             {
-                OpenPlacementMenu(false);
+                AlterMenuStateMenu(false, journal);
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            if (placementMenu.gameObject.activeSelf == false)
+            {
+                AlterMenuStateMenu(true, placementMenu.gameObject);
+            }
+            else
+            {
+                AlterMenuStateMenu(false, placementMenu.gameObject);
             }
         }
     }
 
     
     //IS called true via button press but we have a close button to call false when closing the menu.
-    public void OpenPlacementMenu(bool menuState)
+    public void AlterMenuStateMenu(bool menuState, GameObject menuToChange)
     {
-        placementMenu.gameObject.SetActive(menuState);
+        menuToChange.gameObject.SetActive(menuState);
 
         if (menuState == true)
         {
             Cursor.lockState = CursorLockMode.None;
-            placementUIOpen = true;
+            menuOpen = true;
         }
         else if (menuState == false)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            placementUIOpen = false;
+            menuOpen = false;
         }
     }
 }

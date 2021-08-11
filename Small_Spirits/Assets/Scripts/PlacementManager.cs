@@ -10,7 +10,8 @@ public class PlacementManager : MonoBehaviour
     [SerializeField] LayerMask placementLayerMask;
     [SerializeField] Camera cam;
 
-    bool readyToPlace = false;
+    //made seralize so I can check if its being turned on it editor.
+    [SerializeField] bool readyToPlace = false;
 
     private GameObject currentPlaceableObject;
 
@@ -21,21 +22,25 @@ public class PlacementManager : MonoBehaviour
 
     private void Update()
     {
-        CheckForRayCollision();
-        ReleaseIfClicked();
+        HandleNewObject();
+
+        if (currentPlaceableObject != null)
+        {
+            print(currentPlaceableObject.name + " != null ");
+            CheckForRayCollision();
+            ReleaseIfClicked();
+        }
         ClosePlacementModeOnMouse1();
 
     }
 
-    private void ClosePlacementModeOnMouse1()
+    private void HandleNewObject()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
+        if (placeableObjectPrefab != null && readyToPlace == false)
         {
-            if (currentPlaceableObject != null)
-            {
-                Destroy(currentPlaceableObject);
-                gameObject.SetActive(false);
-            }
+            print("Trying to spawn " + placeableObjectPrefab.name);
+            currentPlaceableObject = Instantiate(placeableObjectPrefab);
+            readyToPlace = true;
         }
     }
 
@@ -46,8 +51,7 @@ public class PlacementManager : MonoBehaviour
         //Debug.DrawRay(cam.transform.position, Vector3.forward * 10);
         if (Physics.Raycast(placementRay, out hitInfo, 20, placementLayerMask))
         {
-            ShowPlacingObject();
-            if (currentPlaceableObject != null)
+            if (readyToPlace)
             {
                 currentPlaceableObject.transform.position = hitInfo.point;
                 currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
@@ -56,22 +60,26 @@ public class PlacementManager : MonoBehaviour
         }
     }
 
-    private void ShowPlacingObject()
-    {
-        if (placeableObjectPrefab != null && readyToPlace == false)
-        {
-            currentPlaceableObject = Instantiate(placeableObjectPrefab);
-            print("Spawning" + currentPlaceableObject.name);
-            readyToPlace = true;
-        }  
-    }
-
     private void ReleaseIfClicked()
     {
         if (Input.GetMouseButtonDown(0))
         {
             currentPlaceableObject = null;
             readyToPlace = false;
+        }
+    }
+
+    //Allows us to exit this placement mode by pressing Mouse 1 or Esc
+    private void ClosePlacementModeOnMouse1()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentPlaceableObject != null)
+            {
+                Destroy(currentPlaceableObject);
+                readyToPlace = false;
+                gameObject.SetActive(false);
+            }
         }
     }
 }
