@@ -135,6 +135,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionRamp.cs" />
     <Compile Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs" />
+    <Compile Include="Assets\Packages\VoxelAnimals\Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
@@ -176,6 +177,7 @@
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
+    <None Include="Assets\Packages\AdventureForge\Read me.txt" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
@@ -240,6 +242,7 @@
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
     <None Include="Assets\Packages\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Packages\VoxelAnimals\Documentation\ReadMe.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
   </ItemGroup>
   <ItemGroup>

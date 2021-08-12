@@ -333,6 +333,7 @@
 "Assets/Packages/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Scripts/Twirl.cs"
 "Assets/Packages/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs"
 "Assets/Packages/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Scripts/Vortex.cs"
+"Assets/Packages/VoxelAnimals/Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ClensingTool.cs"
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/MouseLook.cs"

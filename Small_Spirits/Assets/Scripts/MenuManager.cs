@@ -32,19 +32,23 @@ public class MenuManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-
-            if (placementMenu.gameObject.activeSelf == false)
-            {
-                AlterMenuStateMenu(true, placementMenu.gameObject);
-            }
-            else
-            {
-                AlterMenuStateMenu(false, placementMenu.gameObject);
-            }
+            TogglePlacementMenu();
         }
     }
 
-    
+    public void TogglePlacementMenu()
+    {
+        if (placementMenu.gameObject.activeSelf == false)
+        {
+            AlterMenuStateMenu(true, placementMenu.gameObject);
+        }
+        else
+        {
+            AlterMenuStateMenu(false, placementMenu.gameObject);
+        }
+    }
+
+
     //IS called true via button press but we have a close button to call false when closing the menu.
     public void AlterMenuStateMenu(bool menuState, GameObject menuToChange)
     {
