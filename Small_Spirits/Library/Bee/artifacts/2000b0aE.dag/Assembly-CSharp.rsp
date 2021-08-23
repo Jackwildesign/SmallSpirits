@@ -308,6 +308,7 @@
 "Assets/Scripts/PlantCorruption.cs"
 "Assets/Scripts/PlayerCurrencyManager.cs"
 "Assets/Scripts/PlayerMovementScript.cs"
+"Assets/Scripts/SatesList.cs"
 "Assets/Scripts/SpawnManager.cs"
 "Assets/Scripts/TreeGrowthManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

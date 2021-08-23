@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4444974559784890510}
   - component: {fileID: 4444974559784890511}
   - component: {fileID: -2424903644082649038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,6 +67,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e670c8df04667af4893bd52b1b5a5fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushHealth: 3
+--- !u!65 &4663076584489107066
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7624681748818946718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2326116, y: 0.2544577, z: 0.22412625}
+  m_Center: {x: -0.005357951, y: 0.10952493, z: -0.007378146}
 --- !u!1001 &4444974560409553556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +147,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MushStage1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088857250885918730, guid: da4d136828e53d5479507bae5075faa6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088857250885918730, guid: da4d136828e53d5479507bae5075faa6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Mushroom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da4d136828e53d5479507bae5075faa6, type: 3}
