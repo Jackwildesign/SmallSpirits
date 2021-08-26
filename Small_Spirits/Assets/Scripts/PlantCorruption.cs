@@ -6,6 +6,7 @@ public class PlantCorruption : MonoBehaviour
 {
 
     public float corruption = 100f;
+    [SerializeField] int health = 3;
 
     public void RemoveCorruption(int clensingpower)
     {
@@ -18,5 +19,14 @@ public class PlantCorruption : MonoBehaviour
             Renderer treeRender = GetComponent<Renderer>();
             treeRender.material.SetColor("Green", Color.green);
         }
+    }
+
+    public void GetEaten()
+    {
+        health--;
+        if (health <= 0 )
+        {
+            Destroy(gameObject);
+        } 
     }
 }

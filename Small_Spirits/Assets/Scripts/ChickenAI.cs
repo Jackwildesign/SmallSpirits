@@ -10,6 +10,9 @@ public class ChickenAI : MonoBehaviour
     [SerializeField] int health = 5;
     NavMeshAgent navMeshAgent;
     bool hungry;
+    Vector3 target;
+    GameObject food;
+    float distanceToTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +23,33 @@ public class ChickenAI : MonoBehaviour
 
     void Update()
     {
+        CheckHunger();
+
+        if (food != null)
+        {
+            navMeshAgent.SetDestination(target);
+            transform.LookAt(target);
+            if (distanceToTarget <= navMeshAgent.stoppingDistance)
+            {
+                var plantAIRef = food.GetComponentInParent<PlantCorruption>();
+                plantAIRef.GetEaten();
+                hunger = hunger + 1;
+            }
+        }
+
+    }
+
+    private void CheckHunger()
+    {
         if (hunger <= 5)
         {
             health = health - 1;
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+
         }
         else if (hunger <= 15)
         {
@@ -33,12 +60,6 @@ public class ChickenAI : MonoBehaviour
         {
             hungry = false;
         }
-
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-
     }
 
     IEnumerator BecomeHungry()
@@ -52,29 +73,17 @@ public class ChickenAI : MonoBehaviour
 
     private void HuntForFood()
     {
-        {
             Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, 20);
             foreach (Collider hitcollider in hitColliders)
             {
-                print("Searching for Mushrooms, found a " + hitcollider.gameObject.name);
                 if (hitcollider.gameObject.tag == "Mushroom")
                 {
-                    print("Found a mushroom");
-                    navMeshAgent.SetDestination(hitcollider.gameObject.transform.position);
-                    //MoveToFoodAndEat();
-                    return;
+                    distanceToTarget = Vector3.Distance(hitcollider.transform.position, transform.position);
+                    target = hitcollider.gameObject.transform.position;
+                    food = hitcollider.gameObject;
                 }
             }
-        }
     }
 
-    private static void MoveToFoodAndEat()
-    {
-        
-        //Go to first game object
-        //If still there eat it again
-        //If not, run search for food again.
-        //Eat the mushroom
-        //Increase hunger int.
-    }
+
 }

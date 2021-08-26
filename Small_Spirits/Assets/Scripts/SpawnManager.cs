@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (gameObject.activeSelf)
         {
-            print("Checking eco system");
+            print("Checking eco system for spawns");
             CheckForChickenRequirements();
             yield return new WaitForSeconds(10);
         }
