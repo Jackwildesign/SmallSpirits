@@ -1829,6 +1829,12 @@ Transform:
   m_Father: {fileID: 139639423}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &594690128 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4429805867179257502, guid: c24901627c0cef2439b3e34786e6ccdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 950232188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619175535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,6 +2853,11 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4429805867179257496, guid: c24901627c0cef2439b3e34786e6ccdd,
+        type: 3}
+      propertyPath: rigidbodyChicken
+      value: 
+      objectReference: {fileID: 594690128}
     - target: {fileID: 4429805867179257497, guid: c24901627c0cef2439b3e34786e6ccdd,
         type: 3}
       propertyPath: m_Name

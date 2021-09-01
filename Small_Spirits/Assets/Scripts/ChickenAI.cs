@@ -8,11 +8,13 @@ public class ChickenAI : MonoBehaviour
 {
     [SerializeField] int hunger = 20;
     [SerializeField] int health = 5;
+
+    [SerializeField] Rigidbody rigidbodyChicken;
     NavMeshAgent navMeshAgent;
-    bool hungry;
     Vector3 target;
     GameObject food;
     float distanceToTarget;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class ChickenAI : MonoBehaviour
 
     void Update()
     {
+        GetAndSetSpeedOfChicken();
+
         CheckHunger();
 
         if (food != null)
@@ -36,7 +40,16 @@ public class ChickenAI : MonoBehaviour
                 hunger = hunger + 1;
             }
         }
+    }
 
+    private void GetAndSetSpeedOfChicken()
+    {
+        float currentSpeed = rigidbodyChicken.velocity.magnitude;
+        GetComponent<Animator>().SetFloat("Speed", currentSpeed);
+        if (currentSpeed > 0)
+        {
+            print("Chickens speed = " + currentSpeed);
+        }
     }
 
     private void CheckHunger()
@@ -49,16 +62,10 @@ public class ChickenAI : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
         else if (hunger <= 15)
         {
             HuntForFood();
-            hungry = true;
-        }
-        else if (hunger > 15)
-        {
-            hungry = false;
         }
     }
 
@@ -84,6 +91,4 @@ public class ChickenAI : MonoBehaviour
                 }
             }
     }
-
-
 }
