@@ -9,6 +9,7 @@ public class PlacementManager : MonoBehaviour
 
     [SerializeField] LayerMask placementLayerMask;
     [SerializeField] Camera cam;
+    [SerializeField] PlayerCurrencyManager currencyManager;
 
     //made seralize so I can check if its being turned on it editor.
     [SerializeField] bool readyToPlace = false;
@@ -64,8 +65,17 @@ public class PlacementManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentPlaceableObject = null;
-            readyToPlace = false;
+            if (currencyManager.currencyTotal >= 50)
+            {
+                currencyManager.StringCurrencyTotal(-50);
+                currentPlaceableObject = null;
+                readyToPlace = false;
+            }
+            else
+            {
+                //make a UI pop up appear
+                print("not enough money ");
+            }
         }
     }
 

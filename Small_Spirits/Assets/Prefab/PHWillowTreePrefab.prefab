@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c462da589b769be488de7ccce6c5f13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corruption: 0
+  corruption: 100
+  health: 3
 --- !u!114 &7290635869779012121
 MonoBehaviour:
   m_ObjectHideFlags: 0
