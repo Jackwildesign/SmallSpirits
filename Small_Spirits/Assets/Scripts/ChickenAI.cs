@@ -36,7 +36,7 @@ public class ChickenAI : MonoBehaviour
             if (distanceToTarget <= navMeshAgent.stoppingDistance +1)
             {
                 var plantAIRef = food.GetComponentInParent<PlantCorruption>();
-                plantAIRef.GetEaten();
+                plantAIRef.TakeDamage(1);
                 GetComponent<Animator>().SetTrigger("Eating");
                 hunger = hunger + 1;
             }
@@ -45,7 +45,6 @@ public class ChickenAI : MonoBehaviour
 
     private void GetAndSetSpeedOfChicken()
     {
-        //I cannot work out how to get the accurate speed of this guy.
         float currentSpeed = navMeshAgent.velocity.magnitude;
         GetComponent<Animator>().SetFloat("Speed", currentSpeed);
         if (currentSpeed > 0)

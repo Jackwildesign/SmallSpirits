@@ -37,11 +37,17 @@ public class ClensingTool : MonoBehaviour
 
     IEnumerator BeginClensing(PlantCorruption plantScript)
     {
-        while (plantScript.corruption > 0)
+        if (plantScript != null)
         {
-            plantScript.RemoveCorruption(clensingPower);
-            currency++;
-            yield return new WaitForSeconds(clensingSpeed);
+            while (plantScript.corruption > 0)
+            {
+
+                plantScript.RemoveCorruption(clensingPower);
+                currency++;
+                yield return new WaitForSeconds(clensingSpeed);
+
+            }
         }
+        
     }
 }

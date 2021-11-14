@@ -11,10 +11,11 @@ public class PlaceClensingTool : MonoBehaviour
     [SerializeField] PlayerCurrencyManager playerCurencyRef;
     [SerializeField] PlacementManager placementManagerRef;
     [SerializeField] MenuManager menuManagerRef;
+    [SerializeField] GameObject fakeClensingTool;
 
     ClensingTool clensingToolToPlace;
 
-    bool clensingToolIsPlaced;
+    public bool clensingToolIsPlaced;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class PlaceClensingTool : MonoBehaviour
 
     private void CheckForLeftClick()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && fakeClensingTool.activeSelf)
         {
             SpawnClensingTool();
         }
@@ -46,12 +47,20 @@ public class PlaceClensingTool : MonoBehaviour
         }
     }
 
-    private void ReturnClensingTool()
+    public void ReturnClensingTool()
     {
         if (clensingToolIsPlaced == true && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.menuOpen == false)
         {
             CollectCurrencyFromClensingTool();
             clensingToolIsPlaced = false;
+
+            //while (Vector3.Distance(transform.position, clensingTool.transform.position) >= 0.5f)
+            //{
+            //    //Moves the clensing tool towards the player? I hope...
+            //    clensingTool.transform.position = Vector3.MoveTowards(clensingTool.transform.position, transform.position, 1 * Time.deltaTime);
+            //}
+
+            fakeClensingTool.SetActive(true);
             Destroy(clensingToolToPlace.gameObject);
         }
     }
@@ -67,7 +76,8 @@ public class PlaceClensingTool : MonoBehaviour
         if(clensingToolIsPlaced == false && placementManagerRef.gameObject.activeSelf == false && menuManagerRef.menuOpen == false)
             
         {
-            clensingToolToPlace =  Instantiate(clensingTool, transform.position, transform.rotation);
+            clensingToolToPlace =  Instantiate(clensingTool, fakeClensingTool.transform.position, fakeClensingTool.transform.rotation);
+            fakeClensingTool.SetActive(false);
             clensingToolIsPlaced = true;
         }
         else
